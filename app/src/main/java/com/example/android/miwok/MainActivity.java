@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +33,58 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
+        // Find id
+        TextView numbersText = (TextView) findViewById(R.id.numbers);
 
+        numbersText.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // do something when the button is clicked
+                Intent open = new Intent( MainActivity.this, NumbersActivity.class);
+                startActivity(open);
+            }
+        });
+        TextView colorsText = (TextView) findViewById(R.id.colors);
+        colorsText.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // do something when the button is clicked
+                Intent open = new Intent( MainActivity.this, ColorsActivity.class);
+                startActivity(open);
+            }
+        });
+
+        TextView familyText = (TextView) findViewById(R.id.family);
+        familyText.setOnClickListener(familysListener);
+
+        TextView phrasesText = (TextView) findViewById(R.id.phrases);
+        phrasesText.setOnClickListener(phrasesListener);
     }
 
-    public void NavigateNumber(View view) {
-        Intent numbersIntent = new Intent(this, NumbersActivity.class);
-        startActivity(numbersIntent);
-    }
+
+
+
+
+
+
+        public void onClick(View v) {
+            // do something when the button is clicked
+            Intent open = new Intent( MainActivity.this, ColorsActivity.class);
+            startActivity(open);
+        }
+
+
+    private OnClickListener familysListener = new OnClickListener() {
+        public void onClick(View v) {
+            // do something when the button is clicked
+            Intent open = new Intent( MainActivity.this,  FamilyActivity.class);
+            startActivity(open);
+        }
+    };
+
+    private OnClickListener phrasesListener = new OnClickListener() {
+        public void onClick(View v) {
+            // do something when the button is clicked
+            Intent open = new Intent( MainActivity.this, PhrasesActivity.class);
+            startActivity(open);
+        }
+    };
 }
